@@ -7,16 +7,24 @@ class Item extends Component{
         count:1
     }
 
-    handleclick(){
-        alert(this.state.count);
+    constructor(){
+        super();
+        this.handleclick=this.handleclick.bind(this);
+    }
+
+    handleclick=()=>{
+        this.setState({count:this.state.count+=1});
     }
 
     
     render(){
         return(
             <div>
-                <span>{this.styleCount()}</span>
-                <button onClick={this.handleclick} >Click!</button>
+                <span style = {{border:"7px solid lightgrey"}}
+                className="badge badge-info m-1"
+                >{this.styleCount()}</span>
+                <button style = {{}}
+                className="badge badge-primary" onClick={this.handleclick} >Click!</button>
             </div>
         );
     }
