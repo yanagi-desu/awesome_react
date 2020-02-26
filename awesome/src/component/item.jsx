@@ -1,11 +1,10 @@
 import React,{Component} from "react"
-import {render} from "react-dom"
 
 //see if i can commit 
 
 class Item extends Component{
     state={
-        count:0,
+        count:this.props.value,
         itemlist:[
             {
                 id:0,
@@ -28,17 +27,22 @@ class Item extends Component{
                 modifier:"list-group-item list-group-item-danger"
             }
             ]
-    }
+    };
 
+/**
     constructor(){
         super();
         this.handleclick=this.handleclick.bind(this);
-    }
 
-    handleclick=()=>{
+    }
+ * 
+ */
+
+    handleclick=e=>{
         this.setState({count:this.state.count+=1});
     }
 
+    //where rendering of list starts 
     renderItems(){
         if(this.state.itemlist.length === 0){
             return(
@@ -72,7 +76,8 @@ class Item extends Component{
                 <button style = {{}}
                 className="badge badge-primary" onClick={this.handleclick} >Click!</button>
                 <React.Fragment>
-                    {this.renderItems()};
+                    {this.renderItems()}
+                    {this.props.children}
                 </React.Fragment>
             </div>
         );
