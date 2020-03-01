@@ -14,3 +14,5 @@ class Navibar extends Component{
         );
     }
 }
+
+export default Navibar;
