@@ -11,11 +11,23 @@ class Items extends Component{
         ]
     }
 
+        //handle the case where user clicks the delete button 
+    handleDelete=itemID=>{
+        console.log("hi there");
+        console.log(itemID);
+        const items = this.state.items.filter(item => item.id!== itemID);
+        this.setState({items:　items});
+    }
+    
+
     render(){
         return(
             <React.Fragment>
-                {this.state.items.map(item=>(<Item key={item.id} value={item.value}>
-                                                <div className="card-footer text-muted">
+                {this.state.items.map(item=>(<Item  key={item.id} 
+                                                    value={item.value} 
+                                                    onDelete={this.handleDelete}
+                                                    id={item.id}>
+                                                <div className="card-footer text-muted mb-3">
                                                     Numbers<b className="badge badge-info m-2">{item.value}</b>
                                                 </div>
                                             </Item>))}

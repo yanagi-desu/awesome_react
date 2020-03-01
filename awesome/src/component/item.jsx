@@ -1,7 +1,5 @@
 import React,{Component} from "react"
 
-//see if i can commit 
-
 class Item extends Component{
     state={
         count:this.props.value,
@@ -37,7 +35,7 @@ class Item extends Component{
     }
  * 
  */
-
+    //handle the case where user clicks the add button 
     handleclick=e=>{
         this.setState({count:this.state.count+=1});
     }
@@ -62,19 +60,21 @@ class Item extends Component{
         }
     }
     
+    //where rendering starts
     render(){
         return(
             <div>
                 <React.Fragment>
                     <div className="card mb-2">
-                        <h5 className = {this.styleheader()}>{this.styleheader()}</h5>
+                        <h5 className = {this.styleheader()}>"Name"</h5>
                     </div>
                 </React.Fragment>
-                <span style = {{border:"7px solid lightgrey"}}
-                className="badge badge-info m-1"
-                >{this.styleCount()}</span>
+                <span style = {{border:"9px solid lightgrey"}}
+                className="badge badge-info mr-2"
+                >{this.HandleBadge()}</span>
                 <button style = {{}}
                 className="badge badge-primary" onClick={this.handleclick} >Click!</button>
+                <button style ={{}} className="badge badge-primary ml-2" onClick={()=>this.props.onDelete(this.props.id)}>Delete</button>
                 <React.Fragment>
                     {this.renderItems()}
                     {this.props.children}
@@ -84,11 +84,11 @@ class Item extends Component{
     }
 
     styleheader(){
-        let classes = "card-header h4 text-white bg-";
+        let classes = 'card-header h4 text-white bg-';
         classes += this.state.count === 0?"warning":"primary";
         return classes;
     }
-    styleCount(){
+    HandleBadge(){
         return this.state.count === 0 ? "Nothing":this.state.count;
     }
 }
